@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CRUD Example</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/general.controller.js"></script>
+<script type="text/javascript" src="app/user.service.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="crudApp" ng-controller="GeneralController">
+
+	
+			<form  ng-submit="saveUser()">
+				<div >
+					<label for="userName">User Name</label> <input type="text"
+						ng-model="user.name"  id="userName"
+						placeholder="User Name">
+				</div>
+				<div >
+					<label for="userEmail">Email</label> <input type="email"
+						ng-model="user.email" 
+						id="userEmail" placeholder="Email">
+				</div>
+
+				<div >
+					<label for="userDepartment">Department</label> 
+					<input type="text"
+						ng-model="user.department" 
+						id="userPassword" placeholder="Department">
+				</div>
+
+				<button type="submit" >{{buttonText}}</button>
+				
+			</form>
+
+			<div >
+				<table >
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Department</th>
+						<th></th>
+					</tr>
+					<tr ng-repeat="user in users">
+						<td>{{user.name}}</td>
+						<td>{{user.email}}</td>
+						<td>{{user.department}}</td>
+						<td>
+							<button type="button" 
+								ng-click="updateUserInit(user)">
+								Update
+							</button>
+							<button type="button" 
+								ng-click="deleteUser(user)">
+							Delete
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+	
+
+</body>
+</html>
